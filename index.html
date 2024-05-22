@@ -28,7 +28,7 @@
 
                 <div class="control-form">
                     <label for="neighborhood">Neighborhood:</label>
-                    <input type="text" id="neighborhood" placeholder="enter your neighborhood">
+                    <input type="text" id="neighborhood" placeholder="enter your neighborhood" >
                 </div>
 
                 <div class="control-form">
@@ -43,11 +43,11 @@
 
                 <div class="control-form">
                     <label for="publicPlace">Public Place:</label>
-                    <input type="text" id="publicPlace" placeholder="enter your public place">
+                    <input type="text" id="publicPlace" placeholder="enter your public place" onblur="ConsultAddress()">
                 </div>
 
                 <div class="control-form">
-                    <label for="publicPlace">Number:</label>
+                    <label for="number">Number:</label>
                     <input type="text" id="number" placeholder="enter your number">
                 </div>
 
@@ -56,6 +56,18 @@
         </section>
 
     </main>
+
+    <!-- <script>
+        const address = document.getElementById('publicPlace').value
+        const uf = document.getElementById('uf').value
+        const city = document.getElementById('city').value
+
+        address.addEventListener('blur', () => {
+
+            ConsultAddress()
+        })
+
+       </script> -->
 
 </body>
 
