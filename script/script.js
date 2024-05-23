@@ -74,43 +74,31 @@ const ResetForm = () => {
 }
 
 const ConsultAddress = () => {
-
-    const uf = document.getElementById('uf').value
-    const city = document.getElementById('city').value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', ' ')
+    const uf = document.getElementById('uf').value;
+    const city = document.getElementById('city').value;
     const address = document.getElementById('publicPlace').value.replace(/\s/g, '+');
 
-    const requestsAddress = new Request(`https://viacep.com.br/ws/${uf}/${city}}/${address}/json/`, {
-                'method': 'GET',
-                'headers': {
-                    'Content-Type': 'aplication/json'
-                }
-            })
+    console.log(city, uf, address);
 
-            fetch(requestsAddress)
-                .then(responses => responses.json())
-                .then(responses => {
+    const requestAddress = new Request(`https://viacep.com.br/ws/${uf}/${city.replace(/\s/g, /\s/g)}/${address}/json`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log(requestAddress)
 
-                    // if (!("erro" in response)) {
+    fetch(requestAddress)
+        .then(responses => responses.json())
+        .then(responses => {
+            if (!("erro" in responses)) {
 
-                        document.getElementById('cep').value = responses.cep
-                        // document.getElementById('uf').setAttribute('readonly', '')
-
-                        // document.getElementById('neighborhood').value = response.bairro
-                        // document.getElementById('neighborhood').setAttribute('readonly', '')
-
-
-                        // document.getElementById('city').value = response.localidade
-                        // document.getElementById('city').setAttribute('readonly', '')
-
-                        // document.getElementById('publicPlace').value = response.logradouro
-                        // document.getElementById('publicPlace').setAttribute('readonly', '')
-
-                    // } else {
-
-                    //     alert('CEP not found')
-                    //     ResetForm()
-
-                    // }
-                })
-
-}
+                document.getElementById('cep').value = responses.cep;
+    
+            } else {
+                alert('CEP not found');
+                ResetForm();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+};
