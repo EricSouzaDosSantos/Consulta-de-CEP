@@ -45,17 +45,18 @@ const ConsultCEP = (cep) => {
 
         } else {
 
-            ResetForm()
             alert('the minimum number of numbers is 8')
+            return ResetForm()
+
 
         }
 
     } else {
 
         alert('empty field CEP')
-        ResetForm()
+         return ResetForm()
 
-       
+
 
     }
 
@@ -98,15 +99,13 @@ const ConsultAddress = () => {
             if (!("erro" in responses)) {
 
                 document.getElementById('cep').value = responses[0].cep;
-    
+
             } else {
                 alert('CEP not found');
-                ResetForm();
+                return ResetForm();
             }
         })
         .catch(error => console.error('Error:', error));
 
-        console.clear()
-
-
+    console.clear()
 };
