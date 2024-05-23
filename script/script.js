@@ -55,16 +55,18 @@ const ConsultCEP = (cep) => {
         alert('empty field CEP')
         ResetForm()
 
-        document.getElementById('uf').removeAttribute('readonly')
-        document.getElementById('neighborhood').removeAttribute('readonly')
-        document.getElementById('city').removeAttribute('readonly')
-        document.getElementById('publicPlace').removeAttribute('readonly')
+       
 
     }
 
 }
 
 const ResetForm = () => {
+
+    document.getElementById('uf').removeAttribute('readonly')
+    document.getElementById('neighborhood').removeAttribute('readonly')
+    document.getElementById('city').removeAttribute('readonly')
+    document.getElementById('publicPlace').removeAttribute('readonly')
 
     document.querySelectorAll('input').forEach(inputs => {
 
@@ -74,13 +76,15 @@ const ResetForm = () => {
 }
 
 const ConsultAddress = () => {
-    const uf = document.getElementById('uf').value;
-    const city = document.getElementById('city').value;
-    const address = document.getElementById('publicPlace').value.replace(/\s/g, '+');
+
+    const removeAssents = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    const uf = document.getElementById('uf').value.replace(/\s/g, ' ')
+    const city = document.getElementById('city').value.replace(/\s/g, ' ')
+    const address = document.getElementById('publicPlace').value.replace(/\s/g, '+')
 
     console.log(city, uf, address);
 
-    const requestAddress = new Request(`https://viacep.com.br/ws/${uf}/${city.replace(/\s/g, /\s/g)}/${address}/json`, {
+    const requestAddress = new Request(`https://viacep.com.br/ws/${removeAssents(uf)}/${removeAssents(city)}/${removeAssents(address)}/json`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -93,7 +97,7 @@ const ConsultAddress = () => {
         .then(responses => {
             if (!("erro" in responses)) {
 
-                document.getElementById('cep').value = responses.cep;
+                document.getElementById('cep').value = responses[0].cep;
     
             } else {
                 alert('CEP not found');
@@ -101,4 +105,8 @@ const ConsultAddress = () => {
             }
         })
         .catch(error => console.error('Error:', error));
+
+        console.clear()
+
+
 };
