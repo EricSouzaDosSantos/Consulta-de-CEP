@@ -54,7 +54,7 @@ const ConsultCEP = (cep) => {
     } else {
 
         alert('empty field CEP')
-         return ResetForm()
+        return ResetForm()
 
 
 
@@ -94,18 +94,52 @@ const ConsultAddress = () => {
     console.log(requestAddress)
 
     fetch(requestAddress)
-        .then(responses => responses.json())
-        .then(responses => {
-            if (!("erro" in responses)) {
+        .then(response => response.json())
+        .then(response => {
 
-                document.getElementById('cep').value = responses[0].cep;
+            if (!("erro" in response)) {
+
+                document.getElementById('cep').value = response[0].cep;
 
             } else {
-                alert('CEP not found');
-                return ResetForm();
+
+                alert('CEP not found')
+                return ResetForm()
+
             }
         })
         .catch(error => console.error('Error:', error));
 
     console.clear()
-};
+}
+
+const RegisterCEP = (address) => {
+
+    fetch('http://localhost:3000/address', {
+        "method": "POST",
+        "headers": {
+            "Content-type": "application/json"
+        },
+        "body": JSON.stringify(address)
+    }).then(resposta => {
+        resposta.ok ? window.alert('Endereço cadastrado!') : window.alert('Erro: ' + resposta.status)
+    })
+
+}
+
+const UpdateCEP = (address) => {
+
+
+        fetch('http://localhost:3000/address', {
+            "method": "PATH",
+            "headers": {
+                "Content-type": "application/json"
+            },
+            "body": JSON.stringify(address)
+        }).then(resposta => {
+            resposta.ok ? window.alert('Endereço cadastrado!') : window.alert('Erro: ' + resposta.status)
+        })
+    
+}
+
+

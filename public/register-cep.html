@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de CEP</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <main>
+
+        <h1>CEP Consult</h1>
+
+        <section>
+
+            <form id="Form">
+
+                <div class="control-form">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" maxlength="9" placeholder="enter your CEP">
+                </div>
+
+                <div class="control-form">
+                    <label for="neighborhood">Neighborhood:</label>
+                    <input type="text" id="neighborhood" placeholder="enter your neighborhood">
+                </div>
+
+                <div class="control-form">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" placeholder="enter your city">
+                </div>
+
+                <div class="control-form">
+                    <label for="uf">UF:</label>
+                    <input type="text" id="uf" placeholder="enter your uf">
+                </div>
+
+                <div class="control-form">
+                    <label for="publicPlace">Public Place:</label>
+                    <input type="text" id="publicPlace" placeholder="enter your public place">
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="registerCEP" class="buttons green">Cadastrar</button>
+                    <button type="reset" class="buttons blue">Limpar</button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+    <script src="script/script.js"></script>
+
+    <script>
+        document.querySelector('#registerCEP').addEventListener('click', () => {
+
+            const address = {
+                "cep": document.querySelector('#cep').value,
+                "publicPlace": document.querySelector('#publicPlace').value,
+                "neighborhood": document.querySelector('#neighborhood').value,
+                "city": document.querySelector('#city').value,
+                "uf": document.querySelector('#uf').value
+            }
+
+            const emptyField = Object.values(address).includes('');
+
+
+            if (!emptyField) {
+
+                RegisterCEP(address)
+
+            } else {
+
+                alert('empty field')
+                return ResetForm()
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

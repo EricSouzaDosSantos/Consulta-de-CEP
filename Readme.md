@@ -48,53 +48,59 @@ git clone https://github.com/EricSouzaDosSantos/Consulta-de-CEP.git
 ```
 
 
-### Passo 2: Instalar Dependências
+### Passo 2: Testar Funcionalidaeds do código
 
 #### JavaScript (exemplo):
 
 ``` javscript
 
-const axios = require('axios');
+    const ConsultCEP = (cep) => {
 
-async function consultaCep(cep) {
-    try {
-        const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-        console.log(response.data);
-    } catch (error) {
-        console.error('Erro ao consultar o CEP:', error);
+            const requests = new Request(`https://viacep.com.br/ws/${cep}/json`, {
+                'method': 'GET',
+                'headers': {
+                    'Content-Type': 'aplication/json'
+                }
+            })
+
+            fetch(requests)
+                .then(response => response.json())
+                .then(response => {
+
+                        document.getElementById('uf').value = response.uf
+                        document.getElementById('uf').setAttribute('readonly', '')
+
+                        document.getElementById('neighborhood').value = response.bairro
+                        document.getElementById('neighborhood').setAttribute('readonly', '')
+
+
+                        document.getElementById('city').value = response.localidade
+                        document.getElementById('city').setAttribute('readonly', '')
+
+                        document.getElementById('publicPlace').value = response.logradouro
+                        document.getElementById('publicPlace').setAttribute('readonly', '')
+
+                })
     }
-}
-
-const cep = '01001000';
-consultaCep(cep);
 ```
 
 #### HTML (exemplo):
 ```HTML
-<form id="cepForm">
-    <label for="cep">CEP:</label>
-    <input type="text" id="cep" name="cep" required>
-    <button type="submit">Consultar</button>
-</form>
+        <form id="Form">
 
-<p id="resultado"></p>
+                    <input type="text" id="cep" maxlength="9" placeholder="enter your CEP"
+                        onblur="ConsultCEP(this.value)">
 
-<script>
-    document.getElementById('cepForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const cep = document.getElementById('cep').value;
-        consultaCep(cep);
-    });
+                    <input type="text" id="neighborhood" placeholder="enter your neighborhood" >
 
-    async function consultaCep(cep) {
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const data = await response.json();
-            document.getElementById('resultado').innerText = `Endereço: ${data.logradouro}, ${data.bairro}, ${data.localidade}-${data.uf}`;
-        } catch (error) {
-            document.getElementById('resultado').innerText = 'Erro ao consultar o CEP';
-        }
-    }
-</script>
+                    <input type="text" id="city" placeholder="enter your city" onblur="ConsultAddress()">
+
+                    <input type="text" id="uf" placeholder="enter your uf" onblur="ConsultAddress()">
+
+                    <input type="text" id="publicPlace" placeholder="enter your public place" onblur="ConsultAddress()">
+
+                    <input type="text" id="number" placeholder="enter your number">
+
+            </form>
 
 ```
