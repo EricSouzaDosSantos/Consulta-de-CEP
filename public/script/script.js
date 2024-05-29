@@ -208,8 +208,8 @@ const RegisterCEP = (address) => {
             "Content-type": "application/json"
         },
         "body": JSON.stringify(address)
-    }).then(resposta => {
-        resposta.ok ? window.alert('Endereço cadastrado!') : window.alert('Erro: ' + resposta.status)
+    }).then(response => {
+        response.ok ? window.alert('Address Registered!!') : window.alert('Erro: ' + response.status)
     })
 
 }
