@@ -3,7 +3,7 @@
     {
       "cep": " 04023-001",
       "public place": "Rua Gandavo",
-      "neighbrhood": "Vila Mariana",
+      "neighborhood": "Vila Mariana",
       "city": "São paulo",
       "uf": "SP",
       "id": "3557"
@@ -11,7 +11,7 @@
     {
       "cep": "05870-200",
       "public place": "Avenida Visconde Do Rio Grande",
-      "neighbrhood": "Vila Mariana",
+      "neighborhood": "Vila Mariana",
       "city": "São paulo",
       "uf": "SP",
       "id": "dcda"
@@ -36,17 +36,25 @@
       "id": "c587",
       "cep": " 04023-001",
       "public place": "Rua Gandavo",
-      "neighbrhood": "Vila Mariana",
+      "neighborhood": "Vila Mariana",
       "city": "São paulo",
       "uf": "SP"
     },
     {
       "id": "871d",
       "cep": "05870-200",
-      "publicPlace": "fdsfsfsfsdf",
+      "public place": "fdsfsfsfsdf",
       "neighborhood": "Jardim São José",
       "city": "SaoPaulo",
       "uf": "fdf"
+    },
+    {
+      "id": "9a30",
+      "cep": "05870200",
+      "public place": "Avenida Visconde do Rio Grande",
+      "neighborhood": "Jardim São José",
+      "city": "São Paulo",
+      "uf": "SP"
     }
   ]
 }
