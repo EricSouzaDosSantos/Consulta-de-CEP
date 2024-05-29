@@ -178,7 +178,7 @@ const GetCEP = () => {
 
             <td data-cell="actions">
                 <button type="button" class="buttons green" onclick="UpdateCEPInfo('${list.id}')">update</button>
-                <button type="button" class="buttons red" onclick="DeleteCEP(${list.id})">Delete</button>
+                <button type="button" class="buttons red" onclick="DeleteCEP('${list.id}')">Delete</button>
             </td>
 
         </tr>
@@ -216,6 +216,13 @@ const RegisterCEP = (address) => {
 
 const UpdateCEPInfo = (id) => {
 
+    alert('use the update button to update')
+
+    document.getElementById('update').style.display = 'block';
+
+    document.getElementById('update').addEventListener('click', () => UpdateCEP(id));
+
+
     const requests = new Request(`http://localhost:3000/address/${id}`, {
         'method': 'GET',
         'headers': {
@@ -241,14 +248,10 @@ const UpdateCEPInfo = (id) => {
 
     closeModal()
 
-    document.getElementById('updateCEP').removeEventListener('click');
-    document.getElementById('updateCEP').addEventListener('click', alert("botaooooooooooooo"));
 }
 
 
 const UpdateCEP = (id) => {
-
-    alert(id)
 
     const address = {
         "cep": document.querySelector('#cep').value,
@@ -256,19 +259,35 @@ const UpdateCEP = (id) => {
         "neighborhood": document.querySelector('#neighborhood').value,
         "city": document.querySelector('#city').value,
         "uf": document.querySelector('#uf').value
-    }
+    };
 
     const requests = new Request(`http://localhost:3000/address/${id}`, {
         'method': 'PATCH',
         'headers': {
-            'Content-Type': 'aplication/json'
+            'Content-Type': 'application/json'
         },
-        "body": address
-    })
-    // .then(resposta => {
-    //     resposta.ok ? window.alert('Endereço Atualizado com sucesso!') : window.alert('Erro: ' + resposta.status)
-    // })
+        "body": JSON.stringify(address)
+    });
 
-}
+    fetch(requests)
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
+};
+
+
+const DeleteCEP = (id) => {
+
+    const requests = new Request(`http://localhost:3000/address/${id}`, {
+        'method': 'DELETE',
+        'headers': {
+            'Content-Type': 'application/json'
+        }
+    });
+    fetch(requests)
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
+};
 
 //http://localhost:3000/address/idDoCEP

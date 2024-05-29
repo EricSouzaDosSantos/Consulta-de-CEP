@@ -50,8 +50,8 @@
 
                 <div class="buttons">
                     <button type="button" id="registerCEP" class="buttons green">Register</button>
-                    <button type="button" id="updateCEP" class="buttons blue">Update</button>
-                    <button type="reset" class="buttons red">Reset</button>
+                    <button id="update" class="buttons blue" style="display: none;">Update</button>
+                    <button type="reset" class="buttons red" onclick="ResetForm()">Reset</button>
                     <button type="button" class=" buttons blue" id="viewCEP" onclick="GetCEP()">view CEP</button>
                 </div>
 
@@ -134,22 +134,6 @@
             }
         });
 
-        // document.querySelector('#updateCEP').addEventListener('click', () => {
-
-        //     const emptyField = Object.values(address).includes('');
-
-
-        //     if (!emptyField) {
-
-        //         UpdateCEP(address)
-
-        //     } else {
-
-        //         alert('empty field')
-        //         return ResetForm()
-
-        //     }
-        // });
     </script>
 
 

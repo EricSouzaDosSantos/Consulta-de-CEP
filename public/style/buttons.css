@@ -1,5 +1,9 @@
 
 .buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
     border-style: none;
     height: 40px;
     padding: 6px 12px;
@@ -9,6 +13,7 @@
     transition: box-shadow .6s ease;
     border-radius: 5px;
 }
+
 
 button.blue{
     background-color: #1fb6ff;
