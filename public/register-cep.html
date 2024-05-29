@@ -20,7 +20,8 @@
 
                 <div class="control-form">
                     <label for="cep">CEP:</label>
-                    <input type="text" id="cep" maxlength="9" placeholder="enter your CEP">
+                    <input type="text" id="cep" maxlength="9" placeholder="enter your CEP"
+                        onblur="ConsultCEP(this.value)">
                 </div>
 
                 <div class="control-form">
@@ -44,11 +45,63 @@
                 </div>
 
                 <div class="buttons">
-                    <button type="button" id="registerCEP" class="buttons green">Cadastrar</button>
-                    <button type="reset" class="buttons blue">Limpar</button>
+                    <button type="button" id="registerCEP" class="buttons green">Register</button>
+                    <button type="button" id="updateCEP" class="buttons blue">Update</button>
+                    <button type="reset" class="buttons red">Limpar</button>
+                    <button type="button" class=" buttons blue" id="viewCEP" onclick="GetCEP()">view CEP</button>
                 </div>
 
             </form>
+
+        </section>
+
+        <section>
+
+            <div class="modal" id="modal">
+
+                <section class="modal-content">
+    
+                    <header class="modal-header">
+    
+                        <h2 id="title-modal">CEP List</h2>
+    
+                        <span class="modal-close" id="modalClose">&#10006</span>
+    
+                    </header>
+    
+                    
+            <table border="1">
+
+                <thead>
+
+                    <tr>
+
+                        <th>CEP</th>
+
+                        <th>UF</th>
+
+                        <th>Public Place</th>
+
+                        <th>Neighborhood</th>
+
+                        <th>City</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="table-body">
+
+
+
+                </tbody>
+
+            </table>
+    
+            </div>
+    
 
         </section>
 
@@ -60,7 +113,7 @@
 
             const address = {
                 "cep": document.querySelector('#cep').value,
-                "publicPlace": document.querySelector('#publicPlace').value,
+                "public place": document.querySelector('#publicPlace').value,
                 "neighborhood": document.querySelector('#neighborhood').value,
                 "city": document.querySelector('#city').value,
                 "uf": document.querySelector('#uf').value
@@ -72,6 +125,23 @@
             if (!emptyField) {
 
                 RegisterCEP(address)
+
+            } else {
+
+                alert('empty field')
+                return ResetForm()
+
+            }
+        });
+
+        document.querySelector('#updateCEP').addEventListener('click', () => {
+
+            const emptyField = Object.values(address).includes('');
+
+
+            if (!emptyField) {
+
+                UpdateCEP(address)
 
             } else {
 
