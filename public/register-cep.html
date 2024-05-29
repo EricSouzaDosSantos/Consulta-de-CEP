@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de CEP</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form.css">
+    <link rel="stylesheet" href="style/modal.css">
+    <link rel="stylesheet" href="style/buttons.css">
+    <link rel="stylesheet" href="style/records.css">
 </head>
 
 <body>
@@ -47,7 +51,7 @@
                 <div class="buttons">
                     <button type="button" id="registerCEP" class="buttons green">Register</button>
                     <button type="button" id="updateCEP" class="buttons blue">Update</button>
-                    <button type="reset" class="buttons red">Limpar</button>
+                    <button type="reset" class="buttons red">Reset</button>
                     <button type="button" class=" buttons blue" id="viewCEP" onclick="GetCEP()">view CEP</button>
                 </div>
 
@@ -55,57 +59,53 @@
 
         </section>
 
-        <section>
+        <div class="modal" id="modal">
 
-            <div class="modal" id="modal">
+            <section class="modal-content">
 
-                <section class="modal-content">
-    
-                    <header class="modal-header">
-    
-                        <h2 id="title-modal">CEP List</h2>
-    
-                        <span class="modal-close" id="modalClose">&#10006</span>
-    
-                    </header>
-    
-                    
-            <table border="1">
+                <header class="modal-header">
 
-                <thead>
+                    <h2 id="title-modal">CEP List</h2>
 
-                    <tr>
+                    <span class="modal-close" id="modalClose">&#10006</span>
 
-                        <th>CEP</th>
+                </header>
 
-                        <th>UF</th>
 
-                        <th>Public Place</th>
+                <table class="records">
 
-                        <th>Neighborhood</th>
+                    <thead>
 
-                        <th>City</th>
+                        <tr>
 
-                        <th>Actions</th>
+                            <th>CEP</th>
 
-                    </tr>
+                            <th>UF</th>
 
-                </thead>
+                            <th>Public Place</th>
 
-                <tbody id="table-body">
+                            <th>Neighborhood</th>
+
+                            <th>City</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="table-body" class="table-body">
 
 
 
-                </tbody>
+                    </tbody>
 
-            </table>
-    
-            </div>
-    
+                </table>
 
-        </section>
+        </div>
 
     </main>
+
     <script src="script/script.js"></script>
 
     <script>
@@ -134,25 +134,25 @@
             }
         });
 
-        document.querySelector('#updateCEP').addEventListener('click', () => {
+        // document.querySelector('#updateCEP').addEventListener('click', () => {
 
-            const emptyField = Object.values(address).includes('');
+        //     const emptyField = Object.values(address).includes('');
 
 
-            if (!emptyField) {
+        //     if (!emptyField) {
 
-                UpdateCEP(address)
+        //         UpdateCEP(address)
 
-            } else {
+        //     } else {
 
-                alert('empty field')
-                return ResetForm()
+        //         alert('empty field')
+        //         return ResetForm()
 
-            }
-        });
+        //     }
+        // });
     </script>
 
-    
+
 
 </body>
 

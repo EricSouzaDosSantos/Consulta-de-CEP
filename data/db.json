@@ -1,12 +1,13 @@
 {
   "address": [
     {
-      "cep": " 04023-001",
-      "public place": "Rua Gandavo",
-      "neighborhood": "Vila Mariana",
-      "city": "São paulo",
-      "uf": "SP",
-      "id": "3557"
+      "cep": "",
+      "public place": "",
+      "neighborhood": "",
+      "city": "",
+      "uf": "",
+      "id": "3557",
+      "neighbrhood": "Jardim São José"
     },
     {
       "cep": "05870-200",
@@ -17,7 +18,7 @@
       "id": "dcda"
     },
     {
-      "cep": "03574110",
+      "cep": "03574-110",
       "public place": "Rua Embiú",
       "neighborhood": "Jardim Santa Maria",
       "city": "São Paulo",
@@ -25,7 +26,7 @@
       "id": "4f1a"
     },
     {
-      "cep": "08330570",
+      "cep": "08330-570",
       "public place": "Rua Escorpião",
       "neighborhood": "Cidade Satélite Santa Barbára",
       "city": "São Paulo",
@@ -50,10 +51,18 @@
     },
     {
       "id": "9a30",
-      "cep": "05870200",
+      "cep": "05870-200",
       "public place": "Avenida Visconde do Rio Grande",
       "neighborhood": "Jardim São José",
       "city": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "id": "1ef6",
+      "cep": "05870-200",
+      "public place": "Avenida Visconde Do Rio Grande",
+      "neighborhood": "Vila Mariana",
+      "city": "São paulo",
       "uf": "SP"
     }
   ]

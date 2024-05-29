@@ -1,3 +1,15 @@
+const openModal = () => {
+    document.getElementById('modal').classList.add('active')
+}
+
+const closeModal = () => {
+    document.getElementById('modal').classList.remove('active')
+}
+
+document.getElementById('viewCEP').addEventListener('click', openModal);
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+
 
 const ConsultCEP = (cep) => {
 
@@ -156,17 +168,17 @@ const GetCEP = () => {
                 ${list["public place"]}
             </td>
 
-            <td data-cell="city">
-                ${list.city}
+            <td data-cell="neighborhood">
+            ${list.neighborhood}
             </td>
 
-            <td data-cell="neighborhood">
-                ${list.neighborhood}
+            <td data-cell="city">
+            ${list.city}
             </td>
 
             <td data-cell="actions">
-                <button type="button" class="button green" onclick="updateUser(${list.id})">update</button>
-                <button type="button" class="button red" onclick="deleteUser(${list.id})">Delete</button>
+                <button type="button" class="buttons green" onclick="UpdateCEPInfo('${list.id}')">update</button>
+                <button type="button" class="buttons red" onclick="DeleteCEP(${list.id})">Delete</button>
             </td>
 
         </tr>
@@ -202,18 +214,61 @@ const RegisterCEP = (address) => {
 
 }
 
-const UpdateCEP = (address) => {
-    const { id, ...restOfAddress } = address;
+const UpdateCEPInfo = (id) => {
 
-    fetch(`http://localhost:3000/address/${id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
+    const requests = new Request(`http://localhost:3000/address/${id}`, {
+        'method': 'GET',
+        'headers': {
+            'Content-Type': 'aplication/json'
+        }
+    })
+
+    fetch(requests)
+        .then(response => response.json())
+        .then(response => {
+
+            document.getElementById('cep').value = response.cep
+
+            document.getElementById('uf').value = response.uf
+
+            document.getElementById('neighborhood').value = response.neighborhood
+
+            document.getElementById('city').value = response.city
+
+            document.getElementById('publicPlace').value = response['public place']
+
+        })
+
+    closeModal()
+
+    document.getElementById('updateCEP').removeEventListener('click');
+    document.getElementById('updateCEP').addEventListener('click', alert("botaooooooooooooo"));
+}
+
+
+const UpdateCEP = (id) => {
+
+    alert(id)
+
+    const address = {
+        "cep": document.querySelector('#cep').value,
+        "public place": document.querySelector('#publicPlace').value,
+        "neighborhood": document.querySelector('#neighborhood').value,
+        "city": document.querySelector('#city').value,
+        "uf": document.querySelector('#uf').value
+    }
+
+    const requests = new Request(`http://localhost:3000/address/${id}`, {
+        'method': 'PATCH',
+        'headers': {
+            'Content-Type': 'aplication/json'
         },
-        body: JSON.stringify(restOfAddress)
-    }).then(response => {
-        response.ok ? window.alert('Endereço atualizado!') : window.alert('Erro: ' + response.status)
-    });
+        "body": address
+    })
+    // .then(resposta => {
+    //     resposta.ok ? window.alert('Endereço Atualizado com sucesso!') : window.alert('Erro: ' + resposta.status)
+    // })
+
 }
 
 //http://localhost:3000/address/idDoCEP

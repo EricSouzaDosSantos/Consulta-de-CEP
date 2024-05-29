@@ -8,6 +8,7 @@
 
 :root{
     --font: "Roboto", sans-serif;
+    --secondary-color: #d3E3FD;
 }
 
 body{
@@ -34,69 +35,4 @@ section{
     margin: 30px 0;
     border-radius: 8px;
     box-shadow: 10px 10px 15px #00000025;
-}
-
-form{
-    display: flex;
-    height: 350px;
-    margin: 30px 0;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-
-.control-form{
-    height: 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-input{
-    height: 30px;
-    border: solid 1px #6d6d6d;
-    border-radius: 6px;
-    font-weight: medium;
-    background-color: #F2F2F2;
-    caret-color: aquamarine;
-    text-indent: 5px;
-}
-
-input::placeholder{
-    color: #3c3c43;
-}
-
-input[type="number"]{
-    appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button{
-    display: none;
-    margin: 0;
-}
-
-.buttons{
-    border-style: none;
-    height: 40px;
-    padding: 6px 12px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: box-shadow .6s ease;
-    border-radius: 5px;
-}
-
-button.blue{
-    background-color: #1fb6ff;
-}
-
-button.green{
-    background-color: #13Ce66;
-}
-button.red{
-    background-color: #ff4949;
-}
-button:hover{
-    box-shadow: inset 200px 0 0 #00000055;
 }

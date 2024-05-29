@@ -1,0 +1,40 @@
+
+form{
+    display: flex;
+    height: 350px;
+    margin: 30px 0;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.control-form{
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input{
+    height: 30px;
+    border: solid 1px #6d6d6d;
+    border-radius: 6px;
+    font-weight: medium;
+    background-color: #F2F2F2;
+    caret-color: aquamarine;
+    text-indent: 5px;
+}
+
+input::placeholder{
+    color: #3c3c43;
+}
+
+input[type="number"]{
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    display: none;
+    margin: 0;
+}
