@@ -23,6 +23,18 @@
             <form id="Form">
 
                 <div class="control-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="enter your Name"
+                        >
+                </div>
+
+                <div class="control-form">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" placeholder="enter your Email"
+                       >
+                </div>
+
+                <div class="control-form">
                     <label for="cep">CEP:</label>
                     <input type="text" id="cep" maxlength="9" placeholder="enter your CEP"
                         onblur="ConsultCEP(this.value)">
@@ -81,6 +93,10 @@
 
                         <tr>
 
+                            <th>Name</th>
+
+                            <th>Email</th>
+
                             <th>CEP</th>
 
                             <th>UF</th>
@@ -117,6 +133,8 @@
         document.querySelector('#registerCEP').addEventListener('click', () => {
 
             const address = {
+                "name": document.getElementById('name').value,
+                "email": document.getElementById('email').value,
                 "cep": document.querySelector('#cep').value,
                 "public place": document.querySelector('#publicPlace').value,
                 "neighborhood": document.querySelector('#neighborhood').value,

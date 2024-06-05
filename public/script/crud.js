@@ -40,6 +40,14 @@ const GetCEP = () => {
                     template += `
         
         <tr>
+
+            <td data-cell="cep">
+                ${list.name}
+            </td>
+
+            <td data-cell="cep">
+                ${list.email}
+            </td>
             
             <td data-cell="cep">
                 ${list.cep}
@@ -118,6 +126,10 @@ const UpdateCEPInfo = (id) => {
     fetch(requests)
         .then(response => response.json())
         .then(response => {
+
+            document.getElementById('name').value = response.name
+
+            document.getElementById('email').value = response.email
 
             document.getElementById('cep').value = response.cep
 
